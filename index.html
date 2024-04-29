@@ -1,99 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Conversor de Vídeo</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-  }
-  form {
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  input[type="text"], select {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-  }
-  input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor YouTube</title>
 </head>
 <body>
-
-<h2>Conversor de Vídeo do YouTube</h2>
-
-<form id="videoForm">
-  <label for="videoURL">URL do vídeo do YouTube:</label>
-  <input type="text" id="videoURL" name="videoURL" placeholder="Cole o link aqui..." required>
-
-  <label for="formato">Formato:</label>
-  <select id="formato" name="formato">
-    <option value="mp3">MP3</option>
-    <option value="mp4">MP4</option>
-  </select>
-
-  <div id="qualidadeContainer" style="display: none;">
-    <label for="qualidade">Qualidade (apenas para MP4):</label>
-    <select id="qualidade" name="qualidade">
-      <option value="720p">720p</option>
-      <option value="480p">480p</option>
-      <option value="360p">360p</option>
-    </select>
-  </div>
-
-  <input type="submit" value="Converter e Baixar">
-</form>
-
-<script>
-  document.getElementById('formato').addEventListener('change', function() {
-    var formato = this.value;
-    var qualidadeContainer = document.getElementById('qualidadeContainer');
-    if (formato === 'mp4') {
-      qualidadeContainer.style.display = 'block';
-    } else {
-      qualidadeContainer.style.display = 'none';
-    }
-  });
-
-  document.getElementById('videoForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    var videoURL = document.getElementById('videoURL').value;
-    var formato = document.getElementById('formato').value;
-    var qualidade = document.getElementById('qualidade').value || null;
-
-    // Função para gerar a URL de download com base nas escolhas do usuário
-    function gerarURLDownload(videoURL, formato, qualidade) {
-      var baseEndpoint = 'https://api.cloudconvert.com';
-      var params = {
-        videoURL: videoURL,
-        formato: formato
-      };
-      if (qualidade) {
-        params.qualidade = qualidade;
-      }
-      var queryString = Object.keys(params).map(key => key + '=' + encodeURIComponent(params[key])).join('&');
-      return baseEndpoint + '?' + queryString;
-    }
-
-    // Gerar a URL de download
-    var downloadURL = gerarURLDownload(videoURL, formato, qualidade);
-
-    // Redirecionar o navegador para a URL de download
-    window.location.href = downloadURL;
-  });
-</script>
-
+    <div class="container">
+            <h1>Conversor YouTube para mp3</h1>
+            <div class="convert-input-container">
+                  <input type="text" id="convert-input" placeholder="Insira o URL do vídeo">
+                  <button type="submit" id="convert-button">Converter e Fazer o Download</button>
+            </div>
+            <div class="result">
+                  <p id="title"></p>
+            </div>
+      </div>
+      <script scr="scripts.js"></script>
 </body>
 </html>
