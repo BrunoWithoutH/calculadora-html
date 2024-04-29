@@ -18,19 +18,22 @@ async funcion grtAudio() {
             console.log("Erro! URL inválido.");
       }
 
-      const url = 'https://youtube-mp36.p.rapidapi.com/dl?id=$(videoId)';
-      const options = {
-            method: "GET",
+      const url = 'https://coolguruji-youtube-to-mp3-download-v1.p.rapidapi.com/?id=$(videoId)'; 
+      const options = { 	
+            method: 'GET', 	
             headers: {
-                  "X-RapidAPI-Key": "688268f4d0msh69176cddbc5ed7bp1008d5jsn1f63b7d6afe9",
-                  "X-RapidAPI-Host": "youtube-mp36.p.rapidapi.com",
-            },
-      };
-      const response = await fetch(url, options);
-      const result =await response.json();
-      resultDisplay.innerHTML = '<p class="title">Título: $(result.title)</p>;
+                  'X-RapidAPI-Key': 'fb1fdb8239mshd9f97b173f6a38bp1a48a2jsna9046c88382d',
+                  'X-RapidAPI-Host': 'coolguruji-youtube-to-mp3-download-v1.p.rapidapi.com' 	
+            } 
+      }; 
+      try { 	
+            const response = await fetch(url, options); 	
+            const result = await response.text();
+            resultDisplay.innerHTML = '<p class="title">Título: $(result.title)</p>;
 
-      setTimeout (() => {
-            window.open(result.link, "_blank");
-      }, 1000);
+            console.log(result); 
+      } 
+      catch (error) { 	
+            console.error(error); 
+      }
 }
