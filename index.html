@@ -6,7 +6,7 @@
     <title>Conversor YouTube para MP3/MP4</title>
 </head>
 <body>
-    <h1>Converter YouTube para MP3/MP4</h1>
+    <h1>Conversor YouTube para MP3/MP4</h1>
     <label for="url">URL do Vídeo:</label>
     <input type="text" id="url" name="url"><br><br>
     
@@ -16,7 +16,7 @@
         <option value="mp4">MP4</option>
     </select><br><br>
     
-    <div id="qualidade" style="display: none;">
+    <div id="qualidade">
         <label for="resolucao">Qualidade:</label>
         <select id="resolucao" name="resolucao">
             <option value="144p">144p</option>
@@ -29,7 +29,7 @@
     </div>
     
     <button id="converter">Converter</button>
-    <button id="download" style="display: none;">Download</button>
+    <a id="download" href="" style="display: none;">Download</a>
     
     <script>
         const formato = document.getElementById('formato');
@@ -48,12 +48,16 @@
         
         converter.addEventListener('click', function() {
             // Lógica de conversão do vídeo
-            download.style.display = 'block';
+            download.style.display = 'inline-block'; // Mudança de 'block' para 'inline-block'
+            const selectedFormat = formato.value;
+            const selectedQuality = resolucao.value;
+            const videoURL = document.getElementById('url').value;
+            
+            // Simulação de download com alerta
+            alert(`Baixando ${selectedFormat.toUpperCase()} em ${selectedQuality} de: ${videoURL}`);
         });
         
-        download.addEventListener('click', function() {
-            // Lógica de download do vídeo convertido
-        });
+        // Removido o evento 'click' do botão de download, pois não há lógica definida para isso
     </script>
 </body>
 </html>
