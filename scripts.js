@@ -6,7 +6,7 @@ convertButton.addEventListener("click", () => {
       getAudio();
 })
 
-async funcion grtAudio() {
+async funcion getAudio() {
       let link = convertInput.value;
       let parts = link.split("-");
       let videoId = "";
