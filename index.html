@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor YouTube</title>
+    <title>Conversor YouTube para MP3/MP4</title>
 </head>
 <body>
     <h1>Conversor YouTube para MP3/MP4</h1>
@@ -17,8 +17,8 @@
     </select><br><br>
     
     <div id="qualidade" style="display: none;">
-        <label for="qualidade">Qualidade:</label>
-        <select id="qualidade" name="qualidade">
+        <label for="resolucao">Qualidade:</label>
+        <select id="resolucao" name="resolucao">
             <option value="144p">144p</option>
             <option value="240p">240p</option>
             <option value="360p">360p</option>
@@ -29,10 +29,14 @@
     </div>
     
     <button id="converter">Converter</button>
+    <button id="download" style="display: none;">Download</button>
     
     <script>
         const formato = document.getElementById('formato');
         const qualidade = document.getElementById('qualidade');
+        const resolucao = document.getElementById('resolucao');
+        const converter = document.getElementById('converter');
+        const download = document.getElementById('download');
         
         formato.addEventListener('change', function() {
             if (formato.value === 'mp4') {
@@ -42,16 +46,72 @@
             }
         });
         
-        const converterBtn = document.getElementById('converter');
-        converterBtn.addEventListener('click', function() {
-            const url = document.getElementById('url').value;
-            const selectedFormat = formato.value;
-            const selectedQuality = qualidade.value || null;
-            
-            // Lógica para converter e baixar o vídeo
-            console.log('URL:', url);
-            console.log('Formato:', selectedFormat);
-            console.log('Qualidade:', selectedQuality);
+        converter.addEventListener('click', function() {
+            // Lógica de conversão do vídeo
+            download.style.display = 'block';
+        });
+        
+        download.addEventListener('click', function() {
+            // Lógica de download do vídeo convertido
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor YouTube para MP3/MP4</title>
+</head>
+<body>
+    <h1>Conversor YouTube para MP3/MP4</h1>
+    <label for="url">URL do Vídeo:</label>
+    <input type="text" id="url" name="url"><br><br>
+    
+    <label for="formato">Formato:</label>
+    <select id="formato" name="formato">
+        <option value="mp3">MP3</option>
+        <option value="mp4">MP4</option>
+    </select><br><br>
+    
+    <div id="qualidade" style="display: none;">
+        <label for="resolucao">Qualidade:</label>
+        <select id="resolucao" name="resolucao">
+            <option value="144p">144p</option>
+            <option value="240p">240p</option>
+            <option value="360p">360p</option>
+            <option value="480p">480p</option>
+            <option value="720p">720p</option>
+            <option value="1080p">1080p</option>
+        </select><br><br>
+    </div>
+    
+    <button id="converter">Converter</button>
+    <button id="download" style="display: none;">Download</button>
+    
+    <script>
+        const formato = document.getElementById('formato');
+        const qualidade = document.getElementById('qualidade');
+        const resolucao = document.getElementById('resolucao');
+        const converter = document.getElementById('converter');
+        const download = document.getElementById('download');
+        
+        formato.addEventListener('change', function() {
+            if (formato.value === 'mp4') {
+                qualidade.style.display = 'block';
+            } else {
+                qualidade.style.display = 'none';
+            }
+        });
+        
+        converter.addEventListener('click', function() {
+            // Lógica de conversão do vídeo
+            download.style.display = 'block';
+        });
+        
+        download.addEventListener('click', function() {
+            // Lógica de download do vídeo convertido
         });
     </script>
 </body>
