@@ -1,22 +1,152 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor YouTube</title>
+    <title>Calculadora</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+          background-color: #13131f;
+        }
+        .calculadora{
+            text-align: center;
+            position: absolute;
+            background-color: rgba(20, 20, 20, 0.9);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border: 2px solid #9e63e6;
+            border-radius: 20px;
+            padding: 15px;
+            color: #fff;
+            
+        }
+  
+        .botao{
+            width: 50px;
+            height: 50px;
+            border-radius: 20px;
+            font-size: 25px;
+            cursor: pointer;
+            margin: 3px;
+            background-color: rgb(50, 50, 50, 0.5);
+            border: none;
+            color: #fff;
+        }
+        .botao:hover{
+            background-color: rgb(70, 70, 70, 0.8);
+        }
+        .apagar {
+            background-color: rgb(20, 20, 20, 0.9) 
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            margin: 10px;
+        }
+       
+        .botaoapagar {
+            border: none;
+            background-color: rgb(20, 20, 20, 0.9);
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+  
+        #resultado{
+            border: 1px solid #9e63e6;
+            width: 210px;
+            height: 35px;
+            margin: 5px;
+            font-size: 35px;
+            color: white;
+            text-align: right;
+            padding: 5px;
+        }
+        
+        .botaoroxo {
+          color: #9e63e6;
+        }
+        .roxo {
+          background-color: #9e63e6;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-            <h1>Converter YouTube para mp3</h1>
-            <div class="convert-input-container">
-                  <input type="text" id="convert-input" placeholder="Insira o URL do vídeo">
-                  <button type="submit" id="convert-button">Converter e baixar</button>
-            </div>
-            <div class="result">
-                  <p id="title"></p>
-            </div>
-      </div>
-      <script scr="scripts.js"></script>
+    <div>
+        <div class="calculadora">
+            <h1 class="botaoroxo">Calculadora</h1>
+            <p id="resultado"></p>
+            <table>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><button class="botaoapagar" onclick="back()"><img class="apagar" src="backspace.png"></button></td>
+                </tr>
+                <tr>
+                    <td><button style="color: #f54242;" class="botao" onclick="clean()"><b>C</b></button></td>
+                    <td><button class="botao botaoroxo" onclick="insert('(')"><b>(</b></button></td>
+                    <td><button class="botao botaoroxo" onclick="insert(')')"><b>)</b></button></td>
+                    <td><button class="botao botaoroxo" onclick="insert('/')"><b>÷</b></button></td>
+                </tr>
+                <tr>
+                    <td><button class="botao" onclick="insert('7')">7</button></td>
+                    <td><button class="botao" onclick="insert('8')">8</button></td>
+                    <td><button class="botao" onclick="insert('9')">9</button></td>
+                    <td><button class="botao botaoroxo" onclick="insert('*')"><b>×</b></button></td>
+                </tr>
+                <tr>
+                    <td><button class="botao" onclick="insert('4')">4</button></td>
+                    <td><button class="botao" onclick="insert('5')">5</button></td>
+                    <td><button class="botao" onclick="insert('6')">6</button></td>
+                    <td><button class="botao botaoroxo" onclick="insert('-')"><b>–</b></button></td>
+                </tr>
+                <tr>
+                    <td><button class="botao" onclick="insert('1')">1</button></td>
+                    <td><button class="botao" onclick="insert('2')">2</button></td>
+                    <td><button class="botao" onclick="insert('3')">3</button></td>
+                    <td><button class="botao botaoroxo" onclick="insert('+')"><b>+</b></button></td>
+                    
+                </tr>
+                <tr>
+                    <td colspan="2"><button class="botao" style="width: 106px;" onclick="insert('0')">0</button></td>
+                    <td><button class="botao" onclick="insert('.')">.</button></td>
+                    <td><button class="botao roxo" onclick="calcular()">=</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        function insert(num)
+        {
+            var numero = document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = numero + num;
+        }
+        function clean()
+        {
+            document.getElementById('resultado').innerHTML = "";
+        }
+        function back()
+        {
+            var resultado = document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length -1);
+        }
+        function calcular()
+        {
+            var resultado = document.getElementById('resultado').innerHTML;
+            if(resultado)
+            {
+                document.getElementById('resultado').innerHTML = eval(resultado);
+            }
+            else
+            {
+                document.getElementById('resultado').innerHTML = "Erro"
+            }
+        }
+    </script>
 </body>
 </html>
