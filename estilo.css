@@ -1,5 +1,6 @@
 body {
     font-family: arial, courier, monospace;
+    background-color: #625970;
 }
 
 *{
@@ -10,7 +11,7 @@ body {
 .calculadora{
     text-align: center;
     position: absolute;
-    background-color: rgba(20, 20, 20, 0.9);
+    background-color: rgba(20, 20, 20, 0.902);
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
@@ -18,6 +19,8 @@ body {
     border-radius: 20px;
     padding: 15px;
     color: #fff;
+    box-shadow:  6px 6px 20px #1b0d31,
+                -3px -3px 15px #a89fb6;
     
 }
 
@@ -52,6 +55,7 @@ body {
 
 #resultado{
     border: 1px solid #9e63e6;
+    border-radius: 15px;
     width: 210px;
     height: 35px;
     margin: 5px;
