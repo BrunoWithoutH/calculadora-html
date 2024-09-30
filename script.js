@@ -37,9 +37,12 @@ function calcular() {
         resultado = resultado.replace(/,/g, '.');
         var finalResult = eval(resultado).toString();
         if (finalResult.length > 11) {
-            finalResult = Number(finalResult).toExponential(6); // Ajuste o número de casas decimais conforme necessário
+            finalResult = Number(finalResult).toExponential(3);
         }
         document.getElementById('resultado').innerHTML = finalResult;
+        if (finalResult.includes('.')) {
+            document.getElementById('resultado').innerHTML = finalResult.replace('.', ',');
+        }
     } else {
         document.getElementById('resultado').innerHTML = "Erro";
     }
