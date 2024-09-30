@@ -51,7 +51,7 @@ var operatorMapping = {
     '/': '÷',
     '+': '+',
     '.': '.',
-    ',': '.'
+    ',': ','
 };
 
 document.addEventListener('keydown', function(event) {
